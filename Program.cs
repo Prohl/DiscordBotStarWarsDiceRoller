@@ -116,7 +116,7 @@ namespace DiscordBotStarWarsDiceRoller
         else if (strMessage.StartsWith("about", StringComparison.OrdinalIgnoreCase))
         {
           await message.Channel.SendMessageAsync($"Star Wars Dice Roller Version '{this.GetType().Assembly.GetName().Version}' under GPL-3.0 License.{Environment.NewLine}" +
-            $"Source code can be found under: https://github.com/Prohl/DiscordBotVampireDiceRoller{Environment.NewLine}");
+            $"Source code can be found under: https://github.com/Prohl/DiscordBotStarWarsDiceRoller{Environment.NewLine}");
         }
         else if (strMessage.StartsWith("help", StringComparison.OrdinalIgnoreCase))
         {
