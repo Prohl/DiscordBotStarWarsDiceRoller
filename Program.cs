@@ -113,6 +113,21 @@ namespace DiscordBotStarWarsDiceRoller
           }
           #endregion
         }
+        else if (strMessage.StartsWith("details", StringComparison.OrdinalIgnoreCase))
+        {
+          #region Details of last roll
+          if (this.dicLastDicepool4User.TryGetValue(GetUniqueDiscriminator(message.Author), out DicePool pool))
+          { 
+            // Return the results from the pool
+            await message.Channel.SendMessageAsync($"{message.Author.Mention} {pool.Details}");
+          }
+          else
+          {
+            // No roll found for the user...
+            await message.Channel.SendMessageAsync($"{message.Author.Mention} I found no roll for you to show the details.");
+          }
+          #endregion
+        }
         else if (strMessage.StartsWith("about", StringComparison.OrdinalIgnoreCase))
         {
           await message.Channel.SendMessageAsync($"Star Wars Dice Roller Version '{this.GetType().Assembly.GetName().Version}' under GPL-3.0 License.{Environment.NewLine}" +
@@ -125,6 +140,7 @@ namespace DiscordBotStarWarsDiceRoller
           strBuilderHelp.AppendLine("- roll: let me roll some dice for you. You can specify the dice to roll with the following keys:");
           strBuilderHelp.AppendLine(DiceExtensionFactory.GetDicekeyText());
           strBuilderHelp.AppendLine("- reroll: I will reroll your last roll.");
+          strBuilderHelp.AppendLine("- details: I will tell you the detailed result of your last roll.");
 
           await message.Channel.SendMessageAsync(strBuilderHelp.ToString());
         }

@@ -30,6 +30,11 @@ namespace DiscordBotStarWarsDiceRoller
     protected abstract int GetResult();
 
     /// <summary>
+    /// Returns the result of the roll
+    /// </summary>
+    public int Result => this.intResult;
+
+    /// <summary>
     /// Number of successes
     /// </summary>
     public virtual int CountSuccess => 0;

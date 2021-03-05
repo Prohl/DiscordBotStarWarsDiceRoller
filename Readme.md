@@ -16,5 +16,6 @@ The StarWarsDiceRoller (Swadir) is a simple Discord Bot to help manage a Star Wa
 * When you type @botname help he will list all commands he understands with an explanation:
     * `roll`: let me roll some dice for you. The dice to roll will be given by keys (characters) associated with the dice. For the binding ask the bot for "help" and he will tell it to you.
     * `reroll`: I will reroll the last roll from the user.
+    * `details`: I will tell you the detailed result of your last roll.
     * `about`: shows the Version and some more info about Swadir
 * As a little gimmick there's a file called chatter.txt in the project. The file consists of key-value pairs divided by ":". When you copy that file into the executing folder of the bot, he will answer with a value if someone writes the key in a message (even if the bot is not adressed).

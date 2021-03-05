@@ -68,6 +68,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="P:DiscordBotStarWarsDiceRoller.DiceBase.Result">
+            <summary>
+            Returns the result of the roll
+            </summary>
+        </member>
         <member name="P:DiscordBotStarWarsDiceRoller.DiceBase.CountSuccess">
             <summary>
             Number of successes

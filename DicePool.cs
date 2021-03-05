@@ -19,6 +19,67 @@ namespace DiscordBotStarWarsDiceRoller
     }
 
     /// <summary>
+    /// Returns a string with a detailed representation of the result
+    /// </summary>
+    public string Details
+    {
+      get
+      {
+        StringBuilder strBuilderReturn = new StringBuilder("Detailed results: ");
+        bool bolFirstDice = true;
+        foreach (DiceBase diceAktuell in this)
+        {
+          // For each dice after the first do something between the dice
+          if (bolFirstDice == false)
+          {
+            strBuilderReturn.Append(" | ");
+          }
+          else
+          {
+            bolFirstDice = false;
+          }
+
+          for (int intCount = 0; intCount < diceAktuell.CountSuccess; intCount++)
+          {
+            strBuilderReturn.Append("S");
+          }
+          for (int intCount = 0; intCount < diceAktuell.CountFailure; intCount++)
+          {
+            strBuilderReturn.Append("F");
+          }
+          for (int intCount = 0; intCount < diceAktuell.CountAdvantage; intCount++)
+          {
+            strBuilderReturn.Append("A");
+          }
+          for (int intCount = 0; intCount < diceAktuell.CountThreat; intCount++)
+          {
+            strBuilderReturn.Append("Th");
+          }
+          for (int intCount = 0; intCount < diceAktuell.CountTriumph; intCount++)
+          {
+            strBuilderReturn.Append("Tr");
+          }
+          for (int intCount = 0; intCount < diceAktuell.CountDespair; intCount++)
+          {
+            strBuilderReturn.Append("D");
+          }
+          for (int intCount = 0; intCount < diceAktuell.CountLightForce; intCount++)
+          {
+            strBuilderReturn.Append("Fl");
+          }
+          for (int intCount = 0; intCount < diceAktuell.CountDarkForce; intCount++)
+          {
+            strBuilderReturn.Append("Fd");
+          }
+
+          strBuilderReturn.Append($" ({diceAktuell.Result})");
+        }
+
+        return strBuilderReturn.ToString();
+      }
+    }
+
+    /// <summary>
     /// ToString to get a userfriendly text with the result
     /// </summary>
     /// <returns></returns>
