@@ -56,7 +56,7 @@ namespace DiscordBotStarWarsDiceRoller
       // See: https://discordnet.dev/guides/v2_v3_guide/v2_to_v3_guide.html
       var dsConfig = new DiscordSocketConfig()
       {
-        GatewayIntents = GatewayIntents.AllUnprivileged
+        GatewayIntents = GatewayIntents.AllUnprivileged | GatewayIntents.MessageContent
       };
       DiscordSocketClient discordClient = new DiscordSocketClient(dsConfig);
 

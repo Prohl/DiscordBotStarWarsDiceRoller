@@ -69,11 +69,8 @@ namespace DiscordBotStarWarsDiceRoller
         return;
       }
 
-      // Also ignore if the message has the defined prefix, mentions the current user or comes from another bot
-      int argPos = 0;
-      if (!(userMessage.HasCharPrefix(Program.PREFIX, ref argPos)
-        || userMessage.HasMentionPrefix(this.socketClient.CurrentUser, ref argPos))
-        || userMessage.Author.IsBot)
+      // Return if the message comes from a bot (including ourselves)
+      if (userMessage.Author.IsBot)
       {
         return;
       }
