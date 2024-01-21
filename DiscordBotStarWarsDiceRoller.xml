@@ -4,264 +4,350 @@
         <name>DiscordBotStarWarsDiceRoller</name>
     </assembly>
     <members>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceAbility">
+        <member name="T:DiscordBotStarWarsDiceRoller.Controller.ChatController">
+            <summary>
+            Controller for several things concerning the Chat
+            </summary>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.Controller.ChatController.GetChatter(System.String)">
+            <summary>
+            Checks if the source contains any traces of chatter and returns the responses
+            </summary>
+            <param name="_source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.Controller.ChatController.GetUniqueDiscriminator(Discord.WebSocket.SocketUser)">
+            <summary>
+            Return username#discriminator of the user
+            </summary>
+            <param name="_user"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DiscordBotStarWarsDiceRoller.Controller.DiceRollerController">
+            <summary>
+            Controller for roling - includes the randomizer and methods to roll several dice
+            </summary>
+        </member>
+        <member name="F:DiscordBotStarWarsDiceRoller.Controller.DiceRollerController.dicLastDicepool4User">
+            <summary>
+            The last dicepool for every user
+            </summary>
+        </member>
+        <member name="F:DiscordBotStarWarsDiceRoller.Controller.DiceRollerController.Randy">
+            <summary>
+            The Randoomizer that's being used
+            </summary>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.Controller.DiceRollerController.RollD6">
+            <summary>
+            Rolls a d10 and returns the result
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.Controller.DiceRollerController.RollD8">
+            <summary>
+            Rolls a d10 and returns the result
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.Controller.DiceRollerController.RollD10">
+            <summary>
+            Rolls a d10 and returns the result
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.Controller.DiceRollerController.RollD12">
+            <summary>
+            Rolls a d10 and returns the result
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.Controller.DiceRollerController.RollD100">
+            <summary>
+            Rolls a d100 and returns this result
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.Controller.DiceRollerController.AddLastRoll4User(Discord.WebSocket.SocketUser,DiscordBotStarWarsDiceRoller.Dices.DicePool)">
+            <summary>
+            Remembers the last roll for the user
+            </summary>
+            <param name="_user"></param>
+            <param name="_pool"></param>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.Controller.DiceRollerController.GetLastDicePoolForUser(Discord.WebSocket.SocketUser)">
+            <summary>
+            Return the last roll for the user or null if there is none
+            </summary>
+            <param name="_user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.Controller.DiceRollerController.ParseAndRollDicePool(System.String,Discord.WebSocket.SocketUser)">
+            <summary>
+            Parses the given string into a dicepool, rolls it and returns it
+            </summary>
+            <param name="_strDicePool">The string that is parsed into the pool</param>
+            <param name="_rollingUser">The executing user to memorize his last pool</param>
+            <returns></returns>
+        </member>
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DiceAbility">
             <summary>
             An ability dice
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceAbility.CountSuccess">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceAbility.CountSuccess">
             <summary>
             Number of successes
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceAbility.CountAdvantage">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceAbility.CountAdvantage">
             <summary>
             Number of advantages
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceAbility.GetResult">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceAbility.GetResult">
             <summary>
             Returns the numerical result of the dice
             </summary>
             <returns></returns>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceAbilityExtensions">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DiceAbilityExtensions">
             <summary>
-            Extension for <see cref="T:DiscordBotStarWarsDiceRoller.DiceAbility"/>
+            Extension for <see cref="T:DiscordBotStarWarsDiceRoller.Dices.DiceAbility"/>
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceAbilityExtensions.DiceKeys">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceAbilityExtensions.DiceKeys">
             <summary>
             The keys for this dice
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceAbilityExtensions.Name">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceAbilityExtensions.Name">
             <summary>
             Name of the dice
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceAbilityExtensions.GetDiceInstance">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceAbilityExtensions.GetDiceInstance">
             <summary>
-            Returns a new instance of <see cref="T:DiscordBotStarWarsDiceRoller.DiceAbility"/>
+            Returns a new instance of <see cref="T:DiscordBotStarWarsDiceRoller.Dices.DiceAbility"/>
             </summary>
             <returns></returns>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceBase">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DiceBase">
             <summary>
             Base-Class for nearly any dice
             </summary>
         </member>
-        <member name="F:DiscordBotStarWarsDiceRoller.DiceBase.intResult">
+        <member name="F:DiscordBotStarWarsDiceRoller.Dices.DiceBase.intResult">
             <summary>
             The result from the roll as int
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceBase.Roll">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceBase.Roll">
             <summary>
             Method to roll the dice
             </summary>
             <returns></returns>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceBase.GetResult">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceBase.GetResult">
             <summary>
             Method to get the result for the specific dice
             </summary>
             <returns></returns>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceBase.Result">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceBase.Result">
             <summary>
             Returns the result of the roll
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceBase.CountSuccess">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceBase.CountSuccess">
             <summary>
             Number of successes
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceBase.CountFailure">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceBase.CountFailure">
             <summary>
             Number of failures
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceBase.CountAdvantage">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceBase.CountAdvantage">
             <summary>
             Number of advantages
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceBase.CountThreat">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceBase.CountThreat">
             <summary>
             Number of threats
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceBase.CountTriumph">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceBase.CountTriumph">
             <summary>
             Number of triumphs
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceBase.CountDespair">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceBase.CountDespair">
             <summary>
             Number if Despairs
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceBase.CountLightForce">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceBase.CountLightForce">
             <summary>
             Number of light force points
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceBase.CountDarkForce">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceBase.CountDarkForce">
             <summary>
             Number of dark force points
             </summary>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceBoost">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DiceBoost">
             <summary>
             Boost dice
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceBoost.CountSuccess">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceBoost.CountSuccess">
             <summary>
             Number of successes
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceBoost.CountAdvantage">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceBoost.CountAdvantage">
             <summary>
             Number of advantages
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceBoost.GetResult">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceBoost.GetResult">
             <summary>
             Returns the numerical result of the dice
             </summary>
             <returns></returns>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceBoostExtension">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DiceBoostExtension">
             <summary>
-            Extension for <see cref="T:DiscordBotStarWarsDiceRoller.DiceBoost"/>
+            Extension for <see cref="T:DiscordBotStarWarsDiceRoller.Dices.DiceBoost"/>
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceBoostExtension.DiceKeys">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceBoostExtension.DiceKeys">
             <summary>
             Keys for this dice
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceBoostExtension.Name">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceBoostExtension.Name">
             <summary>
             Name of the dice
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceBoostExtension.GetDiceInstance">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceBoostExtension.GetDiceInstance">
             <summary>
-            Returns a new instance of <see cref="T:DiscordBotStarWarsDiceRoller.DiceBoost"/>
+            Returns a new instance of <see cref="T:DiscordBotStarWarsDiceRoller.Dices.DiceBoost"/>
             </summary>
             <returns></returns>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceChallenge">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DiceChallenge">
             <summary>
             Challenge dice
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceChallenge.CountFailure">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceChallenge.CountFailure">
             <summary>
             Number of failures
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceChallenge.CountThreat">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceChallenge.CountThreat">
             <summary>
             Number of threats
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceChallenge.CountDespair">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceChallenge.CountDespair">
             <summary>
             Number if despairs
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceChallenge.GetResult">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceChallenge.GetResult">
             <summary>
             Returns the numerical result of the dice
             </summary>
             <returns></returns>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceChallengeExtension">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DiceChallengeExtension">
             <summary>
-            Extension for <see cref="T:DiscordBotStarWarsDiceRoller.DiceChallenge"/>
+            Extension for <see cref="T:DiscordBotStarWarsDiceRoller.Dices.DiceChallenge"/>
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceChallengeExtension.DiceKeys">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceChallengeExtension.DiceKeys">
             <summary>
             Returns the keys for this dce
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceChallengeExtension.Name">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceChallengeExtension.Name">
             <summary>
             Name of the dice
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceChallengeExtension.GetDiceInstance">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceChallengeExtension.GetDiceInstance">
             <summary>
-            Returns a new instance of <see cref="T:DiscordBotStarWarsDiceRoller.DiceChallenge"/>
+            Returns a new instance of <see cref="T:DiscordBotStarWarsDiceRoller.Dices.DiceChallenge"/>
             </summary>
             <returns></returns>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceDifficulty">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DiceDifficulty">
             <summary>
             Difficulty dice
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceDifficulty.CountFailure">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceDifficulty.CountFailure">
             <summary>
             Number of failures
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceDifficulty.CountThreat">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceDifficulty.CountThreat">
             <summary>
             Number of threats
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceDifficulty.GetResult">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceDifficulty.GetResult">
             <summary>
             Returns the numerical result of the dice
             </summary>
             <returns></returns>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceDifficultyExtension">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DiceDifficultyExtension">
             <summary>
-            Extension for <see cref="T:DiscordBotStarWarsDiceRoller.DiceDifficulty"/>
+            Extension for <see cref="T:DiscordBotStarWarsDiceRoller.Dices.DiceDifficulty"/>
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceDifficultyExtension.DiceKeys">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceDifficultyExtension.DiceKeys">
             <summary>
             Keys for the dice
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceDifficultyExtension.Name">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceDifficultyExtension.Name">
             <summary>
             Name of the dice
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceDifficultyExtension.GetDiceInstance">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceDifficultyExtension.GetDiceInstance">
             <summary>
-            Returns a new instance of <see cref="T:DiscordBotStarWarsDiceRoller.DiceDifficulty"/>
+            Returns a new instance of <see cref="T:DiscordBotStarWarsDiceRoller.Dices.DiceDifficulty"/>
             </summary>
             <returns></returns>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceExtensionFactory">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DiceExtensionFactory">
             <summary>
             The factory for the dice extension
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceExtensionFactory.AddExtension(DiscordBotStarWarsDiceRoller.IDiceExtension)">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceExtensionFactory.AddExtension(DiscordBotStarWarsDiceRoller.Dices.IDiceExtension)">
             <summary>
             Adds the extension to the extensionlist. Checks for duplicate keys
             </summary>
             <param name="_extension"></param>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceExtensionFactory.GetDicekeyText">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceExtensionFactory.GetDicekeyText">
             <summary>
             Get's an Text with each dicename and the associated keys
             </summary>
             <returns></returns>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceExtensionFactory.GetDiceForKey(System.Char)">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceExtensionFactory.GetDiceForKey(System.Char)">
             <summary>
             Returns the instance of a dice for the given key.
             Returns null if no extension with a matching key was found
@@ -269,211 +355,305 @@
             <param name="_key"></param>
             <returns></returns>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceForce">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DiceForce">
             <summary>
             Force dice
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceForce.CountLightForce">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceForce.CountLightForce">
             <summary>
             Number of light force points
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceForce.CountDarkForce">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceForce.CountDarkForce">
             <summary>
             Number of dark force points
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceForce.GetResult">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceForce.GetResult">
             <summary>
             Returns the numerical result of the dice
             </summary>
             <returns></returns>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceForceExtension">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DiceForceExtension">
             <summary>
-            Extension for <see cref="T:DiscordBotStarWarsDiceRoller.DiceForce"/>
+            Extension for <see cref="T:DiscordBotStarWarsDiceRoller.Dices.DiceForce"/>
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceForceExtension.DiceKeys">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceForceExtension.DiceKeys">
             <summary>
             Keys for the dice
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceForceExtension.Name">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceForceExtension.Name">
             <summary>
             Name of the dice
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceForceExtension.GetDiceInstance">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceForceExtension.GetDiceInstance">
             <summary>
-            Returns a new instance of <see cref="T:DiscordBotStarWarsDiceRoller.DiceForce"/>
+            Returns a new instance of <see cref="T:DiscordBotStarWarsDiceRoller.Dices.DiceForce"/>
             </summary>
             <returns></returns>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DicePool">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DicePool">
             <summary>
             A dicepool
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DicePool.Roll">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DicePool.Roll">
             <summary>
             Rolls all the dice in the pool
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DicePool.ToString">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DicePool.Details">
+            <summary>
+            Returns a string with a detailed representation of the result
+            </summary>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DicePool.ToString">
             <summary>
             ToString to get a userfriendly text with the result
             </summary>
             <returns></returns>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceProficiency">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DiceProficiency">
             <summary>
             Proficiency dice
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceProficiency.CountSuccess">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceProficiency.CountSuccess">
             <summary>
             Number of successes
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceProficiency.CountAdvantage">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceProficiency.CountAdvantage">
             <summary>
             Number of advantages
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceProficiency.CountTriumph">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceProficiency.CountTriumph">
             <summary>
             Number of triumphs
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceProficiency.GetResult">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceProficiency.GetResult">
             <summary>
             Get the result for this dice
             </summary>
             <returns></returns>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceProficiencyExtension">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DiceProficiencyExtension">
             <summary>
-            Extension for <see cref="T:DiscordBotStarWarsDiceRoller.DiceProficiency"/>
+            Extension for <see cref="T:DiscordBotStarWarsDiceRoller.Dices.DiceProficiency"/>
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceProficiencyExtension.DiceKeys">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceProficiencyExtension.DiceKeys">
             <summary>
             Keys for the dice
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceProficiencyExtension.Name">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceProficiencyExtension.Name">
             <summary>
             Name of the dice
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceProficiencyExtension.GetDiceInstance">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceProficiencyExtension.GetDiceInstance">
             <summary>
-            Returns a new instance of <see cref="T:DiscordBotStarWarsDiceRoller.DiceProficiency"/>
+            Returns a new instance of <see cref="T:DiscordBotStarWarsDiceRoller.Dices.DiceProficiency"/>
             </summary>
             <returns></returns>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceRollerController">
-            <summary>
-            Controller for roling - includes the randomizer and methods to roll several dice
-            </summary>
-        </member>
-        <member name="F:DiscordBotStarWarsDiceRoller.DiceRollerController.Randy">
-            <summary>
-            The Randoomizer that's being used
-            </summary>
-        </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceRollerController.RollD6">
-            <summary>
-            Rolls a d10 and returns the result
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceRollerController.RollD8">
-            <summary>
-            Rolls a d10 and returns the result
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceRollerController.RollD10">
-            <summary>
-            Rolls a d10 and returns the result
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceRollerController.RollD12">
-            <summary>
-            Rolls a d10 and returns the result
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceSetback">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DiceSetback">
             <summary>
             Setback dice
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceSetback.CountFailure">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceSetback.CountFailure">
             <summary>
             Number of failures
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceSetback.CountThreat">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceSetback.CountThreat">
             <summary>
              Number of threats
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceSetback.GetResult">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceSetback.GetResult">
             <summary>
             Returns the numerical result of the dice
             </summary>
             <returns></returns>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.DiceSetbackExtension">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.DiceSetbackExtension">
             <summary>
-            Extension for <see cref="T:DiscordBotStarWarsDiceRoller.DiceSetback"/>
+            Extension for <see cref="T:DiscordBotStarWarsDiceRoller.Dices.DiceSetback"/>
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceSetbackExtension.DiceKeys">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceSetbackExtension.DiceKeys">
             <summary>
             Keys for the dice
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.DiceSetbackExtension.Name">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.DiceSetbackExtension.Name">
             <summary>
             Name of the dice
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.DiceSetbackExtension.GetDiceInstance">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.DiceSetbackExtension.GetDiceInstance">
             <summary>
-            Returns a new instance of <see cref="T:DiscordBotStarWarsDiceRoller.DiceSetback"/>
+            Returns a new instance of <see cref="T:DiscordBotStarWarsDiceRoller.Dices.DiceSetback"/>
             </summary>
             <returns></returns>
         </member>
-        <member name="T:DiscordBotStarWarsDiceRoller.IDiceExtension">
+        <member name="T:DiscordBotStarWarsDiceRoller.Dices.IDiceExtension">
             <summary>
             Extension for the dice
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.IDiceExtension.DiceKeys">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.IDiceExtension.DiceKeys">
             <summary>
             Returns the keys (letters) for the specific dice - must be unique
             </summary>
         </member>
-        <member name="P:DiscordBotStarWarsDiceRoller.IDiceExtension.Name">
+        <member name="P:DiscordBotStarWarsDiceRoller.Dices.IDiceExtension.Name">
             <summary>
             The name of the dice
             </summary>
         </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.IDiceExtension.GetDiceInstance">
+        <member name="M:DiscordBotStarWarsDiceRoller.Dices.IDiceExtension.GetDiceInstance">
             <summary>
             Returns a new instance of the dice for the extension
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DiscordBotStarWarsDiceRoller.InteractionHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.InteractionHandler.#ctor(Discord.WebSocket.DiscordSocketClient,Discord.Interactions.InteractionService,System.IServiceProvider)">
+            <summary>
+            Constructor - initializes the members
+            </summary>
+            <param name="_client"></param>
+            <param name="_service"></param>
+            <param name="_provider"></param>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.InteractionHandler.Initialize">
+            <summary>
+            Initializes the Handler
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DiscordBotStarWarsDiceRoller.InteractionModule">
+            <summary>
+            Module for the <see cref="T:DiscordBotStarWarsDiceRoller.InteractionHandler"/>
+            </summary>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.InteractionModule.HandleRollCommand(System.String)">
+            <summary>
+            Handles a roll command
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.InteractionModule.HandleRoll10">
+            <summary>
+            Handles a d10 roll
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.InteractionModule.HandleRoll100">
+            <summary>
+            Handles a d100 roll
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.InteractionModule.HandleReroll">
+            <summary>
+            Handles a reroll command
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.InteractionModule.HandleShowDetails">
+            <summary>
+            Handles the user wish to see the details of his last roll
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DiscordBotStarWarsDiceRoller.PrefixHandler">
+            <summary>
+            Handles Prefixes
+            </summary>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.PrefixHandler.#ctor(Discord.WebSocket.DiscordSocketClient,Discord.Commands.CommandService)">
+            <summary>
+            Constructor - initializes the members
+            </summary>
+            <param name="_client"></param>
+            <param name="_service"></param>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.PrefixHandler.Initialize">
+            <summary>
+            Initializes the Handler
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.PrefixHandler.AddModule``1">
+            <summary>
+            Adds a Module to the handler
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:DiscordBotStarWarsDiceRoller.PrefixModule">
+            <summary>
+            Handler for the <see cref="T:DiscordBotStarWarsDiceRoller.PrefixHandler"/>
+            </summary>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.PrefixModule.HandleRollCommand">
+            <summary>
+            Handles a roll command...
+            No Idea what else it does ;-)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.PrefixModule.HandleRoll10">
+            <summary>
+            Handles a roll command...
+            No Idea what else it does ;-)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.PrefixModule.HandleRoll100">
+            <summary>
+            Handles a roll command...
+            No Idea what else it does ;-)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.PrefixModule.HandleRerollCommand">
+            <summary>
+            Handles a reroll command...
+            No Idea what else it does ;-)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiscordBotStarWarsDiceRoller.PrefixModule.HandleShowDetails">
+            <summary>
+            Handles a reroll command...
+            No Idea what else it does ;-)
             </summary>
             <returns></returns>
         </member>
         <member name="T:DiscordBotStarWarsDiceRoller.Program">
             <summary>
             Main class
+            </summary>
+        </member>
+        <member name="F:DiscordBotStarWarsDiceRoller.Program.PREFIX">
+            <summary>
+            PreFix for the commands
             </summary>
         </member>
         <member name="M:DiscordBotStarWarsDiceRoller.Program.Main(System.String[])">
@@ -486,13 +666,6 @@
             <summary>
             
             </summary>
-            <returns></returns>
-        </member>
-        <member name="M:DiscordBotStarWarsDiceRoller.Program.GetUniqueDiscriminator(Discord.WebSocket.SocketUser)">
-            <summary>
-            Return username#discriminator of the user
-            </summary>
-            <param name="_user"></param>
             <returns></returns>
         </member>
         <member name="T:DiscordBotStarWarsDiceRoller.Properties.Resources">
@@ -509,6 +682,11 @@
             <summary>
               Overrides the current thread's CurrentUICulture property for all
               resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:DiscordBotStarWarsDiceRoller.Properties.Resources.GUILD_ID">
+            <summary>
+              Looks up a localized string similar to 689536068592074796.
             </summary>
         </member>
         <member name="P:DiscordBotStarWarsDiceRoller.Properties.Resources.TOKEN">

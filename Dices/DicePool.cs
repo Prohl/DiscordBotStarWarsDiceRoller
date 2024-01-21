@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DiscordBotStarWarsDiceRoller
+namespace DiscordBotStarWarsDiceRoller.Dices
 {
   /// <summary>
   /// A dicepool
@@ -15,7 +15,7 @@ namespace DiscordBotStarWarsDiceRoller
     /// </summary>
     public void Roll()
     {
-      this.ForEach(dice => dice.Roll());
+      ForEach(dice => dice.Roll());
     }
 
     /// <summary>
